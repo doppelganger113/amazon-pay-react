@@ -2,6 +2,8 @@
 
 Un-official implementation of Amazon pay in React.
 
+[![CircleCI](https://circleci.com/gh/doppelganger113/amazon-pay-react/tree/master.svg?style=svg)](https://circleci.com/gh/doppelganger113/amazon-pay-react/tree/master)
+
 Table of Contents
 =================
 
