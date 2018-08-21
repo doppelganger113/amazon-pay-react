@@ -13,9 +13,9 @@ class AmazonPayButton extends PureComponent {
     this.onError = this.onError.bind(this);
   }
 
-  onAuthorization() {
+  onAuthorization(response) {
     const {onAuthorization} = this.props;
-    onAuthorization && onAuthorization();
+    onAuthorization && onAuthorization(response);
   }
 
   /**
@@ -40,7 +40,7 @@ class AmazonPayButton extends PureComponent {
       authorization: () => {
         const loginOptions = {scope};
 
-        amazon.Login.authorize(loginOptions, this.onAuthorization());
+        amazon.Login.authorize(loginOptions, this.onAuthorization);
       },
       onError:       this.onError,
     });
@@ -58,8 +58,8 @@ AmazonPayButton.propTypes = {
   color:                PropTypes.string.isRequired,
   size:                 PropTypes.string.isRequired,
   useAmazonAddressBook: PropTypes.bool.isRequired,
+  onAuthorization:      PropTypes.func.isRequired,
   onError:              PropTypes.func,
-  onAuthorization:      PropTypes.func,
 };
 
 export default AmazonPayButton;

@@ -129,7 +129,8 @@ class AmazonPay extends Component {
     handleConsentError && handleConsentError(err.getErrorMessage());
   }
 
-  handleBtnOnAuthorization() {
+  handleBtnOnAuthorization(response) {
+    if (response.status !== 'complete') return;
     this.setState({shouldDisplayWidgets: true});
   }
 

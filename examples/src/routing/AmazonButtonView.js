@@ -1,8 +1,8 @@
-import React, {Component}         from 'react';
-import {withRouter}               from 'react-router-dom';
-import {ROUTES}                   from './RouterControllerComponent';
+import React, {Component}    from 'react';
+import {withRouter}          from 'react-router-dom';
+import {ROUTES}              from './RouterControllerComponent';
 import AmazonPayButton
-                                  from '../../../src/components/AmazonPayButton';
+                             from '../../../src/components/AmazonPayButton';
 import {bootstrapWithAmazon} from '../../../src/hoc';
 
 const BootstrappedButton = bootstrapWithAmazon(AmazonPayButton);
@@ -15,9 +15,12 @@ class AmazonButtonView extends Component {
     this.handleOnAuthorization = this.handleOnAuthorization.bind(this);
   }
 
-  handleOnAuthorization() {
+  handleOnAuthorization(response) {
     const {history} = this.props;
-    console.info('Authorized');
+    console.log('Authorization response', response);
+
+    if (response.status !== 'complete') return;
+
     history.push(ROUTES.ADDRESS);
   }
 

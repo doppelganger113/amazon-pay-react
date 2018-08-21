@@ -100,10 +100,22 @@ Components
       color:                PropTypes.string.isRequired,
       size:                 PropTypes.string.isRequired,
       useAmazonAddressBook: PropTypes.bool.isRequired,
+      onAuthorization:      PropTypes.func.isRequired,    // When user authorizes, callback with response object
       onError:              PropTypes.func,               // callback err object
-      onAuthorization:      PropTypes.func,               // When user authorizes, callback void
     };
     ```
+    onAuthorization response object:
+      ```json
+      {
+        "status": "complete",
+        "access_token": "your-token",
+        "token_type": "bearer",
+        "expires_in": 3226,
+        "scope": "profile payments:widget"
+      }
+      ```
+    
+    
   - **AmazonAddressBook**
   
     ```jsx
@@ -135,7 +147,8 @@ Components
 
 Documentation
 --------------
-More information on using the widgets can be found at [pay.amazon.com](https://pay.amazon.com/es/developer/documentation/lpwa/201952050)
+  - [Amazon widget docs](https://pay.amazon.com/es/developer/documentation/lpwa/201952050)
+  - [Amazon pay JavaScript SDK](https://developer.amazon.com/docs/login-with-amazon/javascript-sdk-reference.html#authorize)
 
 Contributing
 =============
