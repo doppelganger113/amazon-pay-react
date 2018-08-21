@@ -5,3 +5,4 @@ examples
 webpack.config.js
 .idea
 .circleci
+yarn-error.log

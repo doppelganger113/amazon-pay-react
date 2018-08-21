@@ -7,6 +7,8 @@ const DEFAULT_STYLE = {
   height: '228px',
 };
 
+const AMAZON_ADDRESS_BOOK_DIV_ID = 'addressBookWidgetDiv';
+
 class AmazonAddressBook extends PureComponent {
 
   constructor(props) {
@@ -90,14 +92,14 @@ class AmazonAddressBook extends PureComponent {
       design:                 {
         designMode: 'responsive',
       },
-    }).bind('addressBookWidgetDiv');
+    }).bind(AMAZON_ADDRESS_BOOK_DIV_ID);
   }
 
   render() {
     const {style} = this.props;
 
     return (
-      <div id="addressBookWidgetDiv" style={AmazonAddressBook.getStyle(style)}/>
+      <div id={AMAZON_ADDRESS_BOOK_DIV_ID} style={AmazonAddressBook.getStyle(style)}/>
     );
   }
 }
@@ -109,12 +111,13 @@ AmazonAddressBook.getStyle = (style) => {
 };
 
 AmazonAddressBook.propTypes = {
-  sellerId:        PropTypes.string.isRequired,
-  agreementType:   PropTypes.string.isRequired,
-  onReady:         PropTypes.func.isRequired,
-  onError:         PropTypes.func.isRequired,
-  onAddressSelect: PropTypes.func.isRequired,
-  style:           PropTypes.object,
+  sellerId:               PropTypes.string.isRequired,
+  agreementType:          PropTypes.string.isRequired,
+  style:                  PropTypes.object,
+  onReady:                PropTypes.func,
+  onError:                PropTypes.func,
+  onAddressSelect:        PropTypes.func,
+  onOrderReferenceCreate: PropTypes.func,
 };
 
 export default AmazonAddressBook;

@@ -1,7 +1,8 @@
 /* global amazon, OffAmazonPayments */
 import React, {PureComponent}     from 'react';
 import PropTypes                  from 'prop-types';
-import {AmazonBootstrapComponent} from '../hoc';
+
+const AMAZON_PAY_BUTTON_DIV_ID = 'AmazonPayButton';
 
 class AmazonPayButton extends PureComponent {
 
@@ -28,10 +29,10 @@ class AmazonPayButton extends PureComponent {
 
   componentDidMount() {
     const {
-            sellerId, scope, type, color, size, useAmazonAddressBook,
-          } = this.props;
+      sellerId, scope, type, color, size, useAmazonAddressBook,
+    } = this.props;
 
-    OffAmazonPayments.Button('AmazonPayButton', sellerId, {
+    OffAmazonPayments.Button(AMAZON_PAY_BUTTON_DIV_ID, sellerId, {
       type,
       color,
       size,
@@ -46,7 +47,7 @@ class AmazonPayButton extends PureComponent {
   }
 
   render() {
-    return <div id="AmazonPayButton"/>;
+    return <div id={AMAZON_PAY_BUTTON_DIV_ID}/>;
   }
 }
 

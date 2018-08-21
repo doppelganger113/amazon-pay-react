@@ -10,6 +10,7 @@ Table of Contents
 * [Usage](#usage)
     * [Install](#install)
     * [Getting started](#getting-started)
+    * [Components](#components)
     * [Documentation](#documentation)
 * [Contributing](#contributing)
     * [Development](#development)
@@ -33,7 +34,7 @@ Install
 Getting started
 ----------------
 
- - **Single page** 
+#### Single page 
   For using all widgets on a single page importing `AmazonPay` should be enough:
 ```jsx
 import AmazonPay from 'amazon-pay-react';
@@ -68,9 +69,9 @@ import AmazonPay from 'amazon-pay-react';
   | handleButtonError:          | Function callback                           | function |
 
 
- - **Split across multiple pages**
+#### Multi page
   When you want to have component per view, you must wrap each widget/component individually with
-the following wrapper in order to not try to render without having the script previously loaded.
+the following wrapper in order to not try and render without having the script previously loaded.
 ```jsx
 import {AmazonPayButton, amazonBootstrapComponent} from 'amazon-pay-react';
 
@@ -85,6 +86,52 @@ Note that `BootstrappedAmazonPayButton` version will require additional attribut
 | onAmazonLoginReady          | Function callback                                         | function |
 
 Check this [example implementation](examples/src/index.js) for a quick start.
+
+Components
+-----------
+
+ - **AmazonPayButton**
+
+    ```jsx
+    AmazonPayButton.propTypes = {
+      sellerId:             PropTypes.string.isRequired,
+      scope:                PropTypes.string.isRequired,
+      type:                 PropTypes.string.isRequired,
+      color:                PropTypes.string.isRequired,
+      size:                 PropTypes.string.isRequired,
+      useAmazonAddressBook: PropTypes.bool.isRequired,
+      onError:              PropTypes.func,               // callback err object
+      onAuthorization:      PropTypes.func,               // When user authorizes, callback void
+    };
+    ```
+  - **AmazonAddressBook**
+  
+    ```jsx
+    AmazonAddressBook.propTypes = {
+      sellerId:               PropTypes.string.isRequired,
+      agreementType:          PropTypes.string.isRequired,
+      style:                  PropTypes.object,
+      onReady:                PropTypes.func,               // Callback that provides orderReference
+      onError:                PropTypes.func,               // Callback that provides err object
+      onAddressSelect:        PropTypes.func,               // Callback that provides orderReference
+      onOrderReferenceCreate: PropTypes.func,               // Callback that provides orderReference
+    };
+    ```
+    Error object usage: `console.log(err.getErrorCode() + ': ' + err.getErrorMessage());`
+    Order reference usage: `orderReference.getAmazonOrderReferenceId();`
+  
+  - **Consent Widget**
+  
+    ```jsx
+    ConsentWidget.propTypes = {
+      amazonBillingAgreementId: PropTypes.string.isRequired,
+      sellerId:                 PropTypes.string.isRequired,
+      style:                    PropTypes.object,
+      onReady:                  PropTypes.func,             // First load callback that provides hasConsent (true|false)
+      onConsent:                PropTypes.func,             // On consent change, callback that provides hasConsent status
+      onError:                  PropTypes.func,             // Callback that provides error object
+    };
+    ```
 
 Documentation
 --------------

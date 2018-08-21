@@ -7,6 +7,8 @@ const DEFAULT_STYLE = {
   height: '260px',
 };
 
+const AMAZON_WALLET_WIDGET_DIV_ID = 'walletWidgetDiv';
+
 class WalletWidget extends PureComponent {
 
   constructor(props) {
@@ -24,7 +26,7 @@ class WalletWidget extends PureComponent {
       design:          {size: WalletWidget.getStyle(style)},
       onPaymentSelect: this.onPaymentSelect,
       onError:         this.onError,
-    }).bind('walletWidgetDiv');
+    }).bind(AMAZON_WALLET_WIDGET_DIV_ID);
   }
 
   /**
@@ -53,7 +55,9 @@ class WalletWidget extends PureComponent {
   }
 
   render() {
-    return <div id='walletWidgetDiv'/>;
+    const {style} = this.props;
+
+    return <div id={AMAZON_WALLET_WIDGET_DIV_ID} style={WalletWidget.getStyle(style)}/>;
   }
 }
 

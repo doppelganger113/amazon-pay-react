@@ -2,10 +2,12 @@
 import React, {PureComponent} from 'react';
 import PropTypes              from 'prop-types';
 
-const ConsentWidgetStyle = {
+const DEFAULT_STYLE = {
   width:  '400px',
   height: '228px',
 };
+
+const AMAZON_CONSENT_WIDGET_DIV_ID = 'consentWidgetDiv';
 
 class ConsentWidget extends PureComponent {
 
@@ -18,19 +20,19 @@ class ConsentWidget extends PureComponent {
   }
 
   componentDidMount() {
-    const {sellerId, onReady, onConsent, onError, amazonBillingAgreementId} = this.props;
+    const {sellerId, onReady, onConsent, onError, amazonBillingAgreementId, style} = this.props;
 
     new OffAmazonPayments.Widgets.Consent({
       sellerId,
       // amazonBillingAgreementId obtained from the Amazon Address Book widget.
       amazonBillingAgreementId,
       design: {
-        size: ConsentWidgetStyle,
+        size: ConsentWidget.getStyle(style),
       },
       onReady,
       onConsent,
       onError,
-    }).bind('consentWidgetDiv');
+    }).bind(AMAZON_CONSENT_WIDGET_DIV_ID);
   }
 
   /**
@@ -74,13 +76,22 @@ class ConsentWidget extends PureComponent {
   }
 
   render() {
-    return <div id="consentWidgetDiv" style={ConsentWidgetStyle}/>;
+    const {style} = this.props;
+
+    return <div id={AMAZON_CONSENT_WIDGET_DIV_ID} style={ConsentWidget.getStyle(style)}/>;
   }
 }
+
+ConsentWidget.getStyle = (style) => {
+  if (typeof style === 'object') return style;
+
+  return DEFAULT_STYLE;
+};
 
 ConsentWidget.propTypes = {
   amazonBillingAgreementId: PropTypes.string.isRequired,
   sellerId:                 PropTypes.string.isRequired,
+  style:                    PropTypes.object,
   onReady:                  PropTypes.func,
   onConsent:                PropTypes.func,
   onError:                  PropTypes.func,
