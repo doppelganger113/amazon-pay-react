@@ -4,6 +4,13 @@ Un-official implementation of Amazon pay in React.
 
 [![CircleCI](https://circleci.com/gh/doppelganger113/amazon-pay-react/tree/master.svg?style=svg)](https://circleci.com/gh/doppelganger113/amazon-pay-react/tree/master)
 
+[![npm version](https://badge.fury.io/js/amazon-pay-react.svg)](https://badge.fury.io/js/amazon-pay-react)
+
+[![GitHub issues](https://img.shields.io/github/issues/doppelganger113/amazon-pay-react.svg)](https://github.com/doppelganger113/amazon-pay-react/issues)
+
+[![GitHub license](https://img.shields.io/github/license/doppelganger113/amazon-pay-react.svg)](https://github.com/doppelganger113/amazon-pay-react/blob/master/LICENSE)
+
+
 Table of Contents
 =================
 
