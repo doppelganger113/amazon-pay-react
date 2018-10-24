@@ -37,35 +37,37 @@ Install
     ```bash
     npm install amazon-pay-react
     ```
-    
+
 Getting started
 ----------------
 
-#### Single page 
+#### Single page
   For using all widgets on a single page importing `AmazonPay` should be enough:
 ```jsx
 import AmazonPay from 'amazon-pay-react';
 
 <AmazonPay
-        clientId='your-cliendId'
-        sellerId='your-sellerId'
-        agreementType={'BillingAgreement'}
-        scope='profile payments:widget'
-        btnType='PwA'
-        btnColor='Gold'
-        btnSize='medium'
+        clientId="your-cliendId"
+        sellerId="your-sellerId"
+        agreementType="BillingAgreement"
+        scope="profile payments:widget"
+        btnType="PwA"
+        btnColor="Gold"
+        btnSize="medium"
         onConsentChange={(hasConsent) => ...handle}
         handleBillingAgreementId={(billingAgreementId) => ...handle}
         billingAgreementId={this.state.billingAgreementId}
         useAmazonAddressBook={true}
         // isSandbox={true}
+        // region="us"
 />
 ```
   **Additional options** to AmazonPay component:
-  
+
   | Attribute                   | Description                                 | Type     |
   | --------------------------- |:-------------------------------------------:| --------:|
   | isSandbox                   | Sandbox or production env                   | boolean  |
+  | region                      | region us/jp/de/uk                          | string   |
   | onAmazonLoginReady          | Function callback                           | function |
   | onAddressSelect             | Function callback                           | function |
   | onPaymentSelect             | Function callback                           | function |
@@ -89,6 +91,7 @@ Note that `BootstrappedAmazonPayButton` version will require additional attribut
 | Attribute                   | Description                                               | Type     |
 | --------------------------- |:---------------------------------------------------------:| --------:|
 | isSandbox                   | Sandbox or production env                                 | boolean  |
+| region                      | region us/jp/de/uk                                        | string  |
 | amazonScriptLoaded          | True if amazon library has loaded via onAmazonLoginReady  | boolean  |
 | onAmazonLoginReady          | Function callback                                         | function |
 
@@ -121,10 +124,10 @@ Components
         "scope": "profile payments:widget"
       }
       ```
-    
-    
+
+
   - **AmazonAddressBook**
-  
+
     ```jsx
     AmazonAddressBook.propTypes = {
       sellerId:               PropTypes.string.isRequired,
@@ -138,9 +141,9 @@ Components
     ```
     Error object usage: `console.log(err.getErrorCode() + ': ' + err.getErrorMessage());`
     Order reference usage: `orderReference.getAmazonOrderReferenceId();`
-  
+
   - **Consent Widget**
-  
+
     ```jsx
     ConsentWidget.propTypes = {
       amazonBillingAgreementId: PropTypes.string.isRequired,
@@ -160,7 +163,7 @@ Documentation
 Contributing
 =============
 If you want to contribute to the library feel free to create an issue and/or a PR
-with a prefix of **feature/your-feature-name** or **bugfix/your-bug-name** 
+with a prefix of **feature/your-feature-name** or **bugfix/your-bug-name**
 
 Development
 -----------
@@ -189,4 +192,3 @@ TODO
  - Add more tests
  - Add more flexibility
  - Specify goals
-
