@@ -45,7 +45,7 @@ class AmazonPay extends Component {
   }
 
   componentDidMount() {
-    const {isSandbox, region = 'us'} = this.props;
+    const {isSandbox, region} = this.props;
 
     window.onAmazonLoginReady = this.onAmazonLoginReady;
 

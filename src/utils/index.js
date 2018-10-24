@@ -4,7 +4,7 @@
  * @param {string} region
  * @return {string}
  */
-export const getScriptUrl = (isSandbox, region) => {
+export const getScriptUrl = (isSandbox, region = 'us') => {
   const sandbox = isSandbox ? 'sandbox/' : '';
 
   switch (region.toLowerCase()) {
