@@ -45,7 +45,7 @@ class AmazonPay extends Component {
   }
 
   componentDidMount() {
-    const {isSandbox} = this.props;
+    const {isSandbox, region = 'us'} = this.props;
 
     window.onAmazonLoginReady = this.onAmazonLoginReady;
 
@@ -53,7 +53,7 @@ class AmazonPay extends Component {
       return;
     }
 
-    appendScript(isSandbox);
+    appendScript(isSandbox, region);
   }
 
   onAmazonLoginReady() {
@@ -239,6 +239,7 @@ AmazonPay.propTypes = {
   btnColor:                 PropTypes.string.isRequired,
   btnSize:                  PropTypes.string.isRequired,
   useAmazonAddressBook:     PropTypes.bool.isRequired,
+  region:                   PropTypes.string,
   isSandbox:                PropTypes.bool,
   onAddressSelect:          PropTypes.func,
   onPaymentSelect:          PropTypes.func,

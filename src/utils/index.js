@@ -4,7 +4,7 @@
  * @param {string} region
  * @return {string}
  */
-export const getScriptUrl = (isSandbox, region = 'us') => {
+export const getScriptUrl = (isSandbox, region) => {
   const sandbox = isSandbox ? 'sandbox/' : '';
 
   switch (region.toLowerCase()) {
@@ -23,11 +23,11 @@ export const getScriptUrl = (isSandbox, region = 'us') => {
  *
  * @param {boolean} isSandbox
  */
-export const appendScript = (isSandbox) => {
+export const appendScript = (isSandbox, region) => {
   const script = document.createElement('script');
 
   script.type = 'text/javascript';
-  script.src = getScriptUrl(isSandbox);
+  script.src = getScriptUrl(isSandbox, region);
   script.async = true;
 
   document.body.appendChild(script);

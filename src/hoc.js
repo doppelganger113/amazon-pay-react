@@ -6,7 +6,7 @@ export const bootstrapWithAmazon = (WrappedComponent) => {
   class _BootstrappedAmazonComponent extends Component {
 
     componentDidMount() {
-      const {isSandbox, onAmazonReady, clientId} = this.props;
+      const {isSandbox, region = 'us', onAmazonReady, clientId} = this.props;
 
       window.onAmazonLoginReady = () => {
         window.amazon.Login.setClientId(clientId);
@@ -17,7 +17,7 @@ export const bootstrapWithAmazon = (WrappedComponent) => {
         return;
       }
 
-      appendScript(isSandbox);
+      appendScript(isSandbox, region);
     }
 
     render() {
