@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import AmazonPay          from '../../src/components/AmazonPay';
+import {REGION}           from '../../src/utils';
 
 export default class ControllerComponent extends Component {
 
@@ -43,6 +44,7 @@ export default class ControllerComponent extends Component {
           sellerId='your-sellerId'
 					agreementType={'BillingAgreement'}
 					scope='profile payments:widget'
+          region={REGION.us}
 					btnType='PwA'
 					btnColor='Gold'
 					btnSize='medium'

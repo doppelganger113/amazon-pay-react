@@ -31,7 +31,7 @@ Install
 --------
  - yarn
     ```bash
-    yarn install amazon-pay-react
+    yarn add amazon-pay-react
     ```
  - npm
     ```bash
@@ -58,22 +58,22 @@ import AmazonPay from 'amazon-pay-react';
         handleBillingAgreementId={(billingAgreementId) => ...handle}
         billingAgreementId={this.state.billingAgreementId}
         useAmazonAddressBook={true}
-        // isSandbox={true}
 />
 ```
   **Additional options** to AmazonPay component:
   
-  | Attribute                   | Description                                 | Type     |
-  | --------------------------- |:-------------------------------------------:| --------:|
-  | isSandbox                   | Sandbox or production env                   | boolean  |
-  | onAmazonLoginReady          | Function callback                           | function |
-  | onAddressSelect             | Function callback                           | function |
-  | onPaymentSelect             | Function callback                           | function |
-  | handleAddressBookError      | Function callback                           | function |
-  | handleWalletOnPaymentSelect | Function callback, argument orderReference  | function |
-  | handleWalletError           | Function callback                           | function |
-  | handleConsentError          | Function callback                           | function |
-  | handleButtonError:          | Function callback                           | function |
+  | Attribute                   | Description                                                   | Type     |
+  | --------------------------- |:-------------------------------------------------------------:| --------:|
+  | isSandbox                   | Sandbox or production env                                     | boolean  |
+  | region                      | Defines region, default 'us' (you can use REGION constant)    | string   |
+  | onAmazonLoginReady          | Function callback                                             | function |
+  | onAddressSelect             | Function callback                                             | function |
+  | onPaymentSelect             | Function callback                                             | function |
+  | handleAddressBookError      | Function callback                                             | function |
+  | handleWalletOnPaymentSelect | Function callback, argument orderReference                    | function |
+  | handleWalletError           | Function callback                                             | function |
+  | handleConsentError          | Function callback                                             | function |
+  | handleButtonError:          | Function callback                                             | function |
 
 
 #### Multi page
@@ -86,11 +86,12 @@ const BootstrappedAmazonPayButton = amazonBootstrapComponent(AmazonPayButton);
 ```
 Note that `BootstrappedAmazonPayButton` version will require additional attributes:
 
-| Attribute                   | Description                                               | Type     |
-| --------------------------- |:---------------------------------------------------------:| --------:|
-| isSandbox                   | Sandbox or production env                                 | boolean  |
-| amazonScriptLoaded          | True if amazon library has loaded via onAmazonLoginReady  | boolean  |
-| onAmazonLoginReady          | Function callback                                         | function |
+| Attribute                   | Description                                                | Type     |
+| --------------------------- |:----------------------------------------------------------:| --------:|
+| isSandbox                   | Sandbox or production env                                  | boolean  |
+| region                      | Defines region, default 'us' (you can use REGION constant) | string   |
+| amazonScriptLoaded          | True if amazon library has loaded via onAmazonLoginReady   | boolean  |
+| onAmazonLoginReady          | Function callback                                          | function |
 
 Check this [example implementation](examples/src/index.js) for a quick start.
 
@@ -186,7 +187,7 @@ https://semver.org/
 TODO
 =====
  - Update documentation
- - Add more tests
+ - Add more tests (need personal AWS central access)
  - Add more flexibility
  - Specify goals
 

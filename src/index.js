@@ -4,6 +4,7 @@ import AmazonAddressBook     from './components/AmazonAddressBook';
 import WalletWidget          from './components/WalletWidget';
 import ConsentWidget         from './components/ConsentWidget';
 import {bootstrapWithAmazon} from './hoc';
+import {REGION}              from './utils';
 
 export default AmazonPay;
 
@@ -13,4 +14,5 @@ export {
   AmazonAddressBook,
   WalletWidget,
   ConsentWidget,
+  REGION,
 };

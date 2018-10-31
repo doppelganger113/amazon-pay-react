@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
-import {appendScript}     from './utils/index';
-import PropTypes          from 'prop-types';
+import React, {Component}     from 'react';
+import {appendScript, REGION} from './utils/index';
+import PropTypes              from 'prop-types';
 
 export const bootstrapWithAmazon = (WrappedComponent) => {
   class _BootstrappedAmazonComponent extends Component {
 
     componentDidMount() {
-      const {isSandbox, onAmazonReady, clientId} = this.props;
+      const {isSandbox, onAmazonReady, clientId, region} = this.props;
 
       window.onAmazonLoginReady = () => {
         window.amazon.Login.setClientId(clientId);
@@ -17,7 +17,7 @@ export const bootstrapWithAmazon = (WrappedComponent) => {
         return;
       }
 
-      appendScript(isSandbox);
+      appendScript(isSandbox, region);
     }
 
     render() {
@@ -32,6 +32,7 @@ export const bootstrapWithAmazon = (WrappedComponent) => {
     clientId:           PropTypes.string.isRequired,
     onAmazonReady:      PropTypes.func,
     amazonScriptLoaded: PropTypes.bool,
+    region:             PropTypes.oneOf(Object.values(REGION)),
   };
 
   return _BootstrappedAmazonComponent;

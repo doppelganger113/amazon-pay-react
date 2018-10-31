@@ -1,10 +1,23 @@
 /**
+ * @typedef {string} Region
+ *
+ * @readonly
+ * @enum {Region}
+ */
+export const REGION = {
+  de: 'de',
+  uk: 'uk',
+  jp: 'jp',
+  us: 'us',
+};
+
+/**
  *
  * @param {boolean} isSandbox
- * @param {string} region
+ * @param {Region} region
  * @return {string}
  */
-export const getScriptUrl = (isSandbox, region = 'us') => {
+export const getScriptUrl = (isSandbox, region = REGION.us) => {
   const sandbox = isSandbox ? 'sandbox/' : '';
 
   switch (region.toLowerCase()) {
@@ -22,12 +35,13 @@ export const getScriptUrl = (isSandbox, region = 'us') => {
 /**
  *
  * @param {boolean} isSandbox
+ * @param {Region} region
  */
-export const appendScript = (isSandbox) => {
+export const appendScript = (isSandbox, region = REGION.us) => {
   const script = document.createElement('script');
 
   script.type = 'text/javascript';
-  script.src = getScriptUrl(isSandbox);
+  script.src = getScriptUrl(isSandbox, region);
   script.async = true;
 
   document.body.appendChild(script);

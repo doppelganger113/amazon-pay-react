@@ -1,7 +1,8 @@
 import React                     from 'react';
 import {render}                  from 'react-dom';
-import ControllerComponent       from './ControllerComponent';
+// import ControllerComponent       from './ControllerComponent';
 import RouterControllerComponent from './routing/RouterControllerComponent';
+import {REGION}                  from '../../src/utils';
 
 const App = () => (
   <RouterControllerComponent
@@ -9,6 +10,7 @@ const App = () => (
     sellerId='your-sellerId'
     agreementType={'BillingAgreement'}
     scope='profile payments:widget'
+    region={REGION.uk} // default to us
     btnType='PwA'
     btnColor='Gold'
     btnSize='medium'
