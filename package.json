@@ -20,6 +20,10 @@
       "amazon": true
     }
   },
+  "jest": {
+    "verbose": true,
+    "testRegex": "(/test/.*|(.|/)(test|spec)).(js|jsx)?$"
+  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",

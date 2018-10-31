@@ -1,11 +1,11 @@
 /* global amazon */
-import React, {Component}        from 'react';
-import AmazonAddressBook         from './AmazonAddressBook';
-import ConsentWidget             from './ConsentWidget';
-import AmazonPayButton           from './AmazonPayButton';
-import {appendScript, toBoolean} from '../utils';
-import PropTypes                 from 'prop-types';
-import WalletWidget              from './WalletWidget';
+import React, {Component}                from 'react';
+import AmazonAddressBook                 from './AmazonAddressBook';
+import ConsentWidget                     from './ConsentWidget';
+import AmazonPayButton                   from './AmazonPayButton';
+import {appendScript, REGION, toBoolean} from '../utils';
+import PropTypes                         from 'prop-types';
+import WalletWidget                      from './WalletWidget';
 
 class AmazonPay extends Component {
 
@@ -45,7 +45,7 @@ class AmazonPay extends Component {
   }
 
   componentDidMount() {
-    const {isSandbox} = this.props;
+    const {isSandbox, region} = this.props;
 
     window.onAmazonLoginReady = this.onAmazonLoginReady;
 
@@ -53,7 +53,7 @@ class AmazonPay extends Component {
       return;
     }
 
-    appendScript(isSandbox);
+    appendScript(isSandbox, region);
   }
 
   onAmazonLoginReady() {
@@ -239,6 +239,7 @@ AmazonPay.propTypes = {
   btnColor:                 PropTypes.string.isRequired,
   btnSize:                  PropTypes.string.isRequired,
   useAmazonAddressBook:     PropTypes.bool.isRequired,
+  region:                   PropTypes.oneOf(Object.values(REGION)),
   isSandbox:                PropTypes.bool,
   onAddressSelect:          PropTypes.func,
   onPaymentSelect:          PropTypes.func,

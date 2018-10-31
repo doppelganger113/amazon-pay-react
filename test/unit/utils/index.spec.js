@@ -1,4 +1,4 @@
-import {getScriptUrl, toBoolean} from './index';
+import {getScriptUrl, toBoolean} from '../../../src/utils/index';
 
 test('getScriptUrl to return proper javascript cdn urls', () => {
   const testData = [
