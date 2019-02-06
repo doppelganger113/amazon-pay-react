@@ -1,8 +1,30 @@
 {
   "name": "amazon-pay-react",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "main": "dist/index.js",
   "license": "MIT",
+  "description": "Amazon Pay React wrapper",
+  "homepage": "https://github.com/doppelganger113/amazon-pay-react",
+  "author": {
+    "email": "doppelganger113@gmail.com",
+    "name": "Marko Kovacevic"
+  },
+  "contributors": [
+    "Marko Kovacevic (doppelganger113@gmail.com)"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/doppelganger113/amazon-pay-react"
+  },
+  "bugs": {
+    "url": "https://github.com/doppelganger113/amazon-pay-react/issues"
+  },
+  "keywords": [
+    "Amazon Pay",
+    "Amazon Pay React",
+    "Amazon Pay Button",
+    "Amazon Pay Widget"
+  ],
   "scripts": {
     "test": "./node_modules/.bin/jest",
     "dev": "webpack-dev-server --mode development --open --hot",
