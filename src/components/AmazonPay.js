@@ -28,6 +28,8 @@ class AmazonPay extends Component {
     this.handleWalletError = this.handleWalletError.bind(this);
     this.handleOnPaymentSelect = this.handleOnPaymentSelect.bind(
       this);
+    this.onOrderReferenceCreate = this.onOrderReferenceCreate.bind(
+      this);
     this.onAmazonLoginReady = this.onAmazonLoginReady.bind(this);
     this.handleButtonError = this.handleButtonError.bind(this);
     this.handleOnAddressSelect = this.handleOnAddressSelect.bind(this);
@@ -154,6 +156,16 @@ class AmazonPay extends Component {
 
   /**
    *
+   * @param {object} orderReference
+   */
+  onOrderReferenceCreate(orderReference) {
+    const {onOrderReferenceCreate} = this.props;
+    onOrderReferenceCreate && onOrderReferenceCreate(orderReference);
+  }
+
+  
+  /**
+   *
    * @param {Error} err
    */
   handleButtonError(err) {
@@ -206,6 +218,7 @@ class AmazonPay extends Component {
               onReady={this.handleAddressBookReady}
               onError={this.handleAddressBookError}
               onAddressSelect={this.handleOnAddressSelect}
+              onOrderReferenceCreate={this.onOrderReferenceCreate}
             />
             <WalletWidget sellerId={sellerId}
               onError={this.handleWalletError}
@@ -243,6 +256,7 @@ AmazonPay.propTypes = {
   isSandbox:                PropTypes.bool,
   onAddressSelect:          PropTypes.func,
   onPaymentSelect:          PropTypes.func,
+  onOrderReferenceCreate:   PropTypes.func,
   onAmazonLoginReady:       PropTypes.func,
   handleAddressBookError:   PropTypes.func,
   handleWalletError:        PropTypes.func,
