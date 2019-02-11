@@ -69,6 +69,7 @@ import AmazonPay from 'amazon-pay-react';
   | onAmazonLoginReady          | Function callback                                             | function |
   | onAddressSelect             | Function callback                                             | function |
   | onPaymentSelect             | Function callback                                             | function |
+  | onOrderReferenceCreate      | Function callback                                             | function |
   | handleAddressBookError      | Function callback                                             | function |
   | handleWalletOnPaymentSelect | Function callback, argument orderReference                    | function |
   | handleWalletError           | Function callback                                             | function |
